@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "aes_encrypt.h"
+#include "aes_encrypt_decrypt.h"
 #define ROUNDS 9
 
 void rotate(unsigned char* word, int n) {
