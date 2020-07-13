@@ -196,9 +196,8 @@ int main(int argc, char** argv){
 	
 	
 	
-	FILE* fptr;
-	errno_t err = fopen_s(&fptr, filepath, "rb");
-	if(err == 22){
+	FILE* fptr = fopen(filepath, "rb");
+	if(fptr == NULL){
 		printf("Error: file not accessible\n");
 		return -1;
 	}
@@ -210,7 +209,7 @@ int main(int argc, char** argv){
 	while(check == 128){
 		len += 128;
 		message = realloc(message, sizeof(unsigned char) * (len + 128));
-		check = fread_s(message, sizeof(message), sizeof(unsigned char), 128, fptr);
+		check = fread(message, sizeof(unsigned char), 128, fptr);
 	}
 	len += check;
 	fclose(fptr);
@@ -233,8 +232,8 @@ int main(int argc, char** argv){
 	for(i=0; i<len; i+=16)  // encrypt blocks of data
 		AES_Encrypt(message+i, expandedKeys);
 	
-	err = fopen_s(&fptr, filepath, "wb");
-	if(err == 22){
+	fptr = fopen(filepath, "wb");
+	if(fptr == NULL){
 		printf("Error: file not accessible\n");
 		return -1;
 	}
@@ -246,6 +245,6 @@ int main(int argc, char** argv){
 	fclose(fptr);
 	free(message);
 	
-	printf("Success: file successfully encrypted.")
+	printf("Success: file successfully encrypted.");
 	return 0;
 }
