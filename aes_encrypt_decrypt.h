@@ -175,12 +175,17 @@ const unsigned char RCON[256] = {
 	0x61, 0xc2, 0x9f, 0x25, 0x4a, 0x94, 0x33, 0x66, 0xcc, 0x83, 0x1d, 0x3a, 0x74, 0xe8, 0xcb, 0x8d
 };
 
-extern void rotate(unsigned char*, int);
+extern void rotate_left(unsigned char*, int);
+extern void rotate_right(unsigned char*, int);
 extern void keyExpansionCore(unsigned char*, int);
 extern void keyExpansion(unsigned char key[16], unsigned char expandedKeys[176]);
 extern void addRoundKey(unsigned char*, unsigned char*);
 extern void subBytes(unsigned char*);
+extern void inv_subBytes(unsigned char*);
 extern void shiftRows(unsigned char*);
+extern void inv_shiftRows(unsigned char*);
 extern void mixColumns(unsigned char*);
+extern void inv_mixColumns(unsigned char*);
 extern void AES_Encrypt(unsigned char*, unsigned char*);
+extern void AES_Decrypt(unsigned char*, unsigned char*);
 #endif

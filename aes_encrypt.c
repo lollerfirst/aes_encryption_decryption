@@ -22,7 +22,7 @@
 #include "aes_encrypt_decrypt.h"
 #define ROUNDS 9
 
-void rotate(unsigned char* word, int n) {
+void rotate_left(unsigned char* word, int n) {
 	unsigned char tmp[4];
 	
 	switch(n){
@@ -54,7 +54,7 @@ void rotate(unsigned char* word, int n) {
 
 void keyExpansionCore(unsigned char* in, int i){
 	//rotate left
-	rotate(in, 1);
+	rotate_left(in, 1);
 	
 	//s_box substitution
 	in[0] = sbox[in[0]];
@@ -112,9 +112,9 @@ void subBytes(unsigned char* state) {
 	}
 }
 void shiftRows(unsigned char* state) {
-	rotate(state+4, 1);
-	rotate(state+8, 2);
-	rotate(state+12, 3);
+	rotate_left(state+4, 1);
+	rotate_left(state+8, 2);
+	rotate_left(state+12, 3);
 }
 
 void mixColumns(unsigned char* state) {
