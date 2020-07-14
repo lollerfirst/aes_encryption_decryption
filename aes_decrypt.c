@@ -57,6 +57,28 @@ void inv_mixColumns(unsigned char* state){
 	unsigned char tmp[16];
 	
 	tmp[0] = mul_14[state[0]] ^  mul_11[state[4]] ^ mul_13[state[8]] ^ mul_9[state[12]];
+	tmp[1] = mul_14[state[1]] ^  mul_11[state[5]] ^ mul_13[state[9]] ^ mul_9[state[13]];
+	tmp[2] = mul_14[state[2]] ^  mul_11[state[6]] ^ mul_13[state[10]] ^ mul_9[state[14]];
+	tmp[3] = mul_14[state[3]] ^  mul_11[state[7]] ^ mul_13[state[11]] ^ mul_9[state[15]];
+	
+	tmp[4] = mul_9[state[0]] ^ mul_14[state[4]] ^ mul_11[state[8]] ^  mul_13[state[12]];
+	tmp[5] = mul_9[state[1]] ^ mul_14[state[5]] ^ mul_11[state[9]] ^  mul_13[state[13]];
+	tmp[6] = mul_9[state[2]] ^ mul_14[state[6]] ^ mul_11[state[10]] ^  mul_13[state[14]];
+	tmp[7] = mul_9[state[3]] ^ mul_14[state[7]] ^ mul_11[state[11]] ^  mul_13[state[15]];
+	
+	tmp[8] = mul_13[state[0]] ^ mul_9[state[4]] ^ mul_14[state[8]] ^ mul_11[state[12]];
+	tmp[9] = mul_13[state[1]] ^ mul_9[state[5]] ^ mul_14[state[9]] ^ mul_11[state[13]];
+	tmp[10] = mul_13[state[2]] ^ mul_9[state[6]] ^ mul_14[state[10]] ^ mul_11[state[14]];
+	tmp[11] = mul_13[state[3]] ^ mul_9[state[7] ^ mul_14[state[11]] ^ mul_11[state[15]];
+					   
+	tmp[12] = mul_11[state[0]] ^ mul_13[state[4]] ^ mul_9[state[8]] ^ mul_14[state[12]];
+	tmp[13] = mul_11[state[1]] ^ mul_13[state[5]] ^ mul_9[state[9]] ^ mul_14[state[13]];
+	tmp[14] = mul_11[state[2]] ^ mul_13[state[6]] ^ mul_9[state[10]] ^ mul_14[state[14]];
+	tmp[15] = mul_11[state[3]] ^ mul_13[state[7]] ^ mul_9[state[11]] ^ mul_14[state[15]];
+					   
+	int i;
+	for(i=0; i<16; i++)
+		state[i] = tmp[i];
 }
 
 void AES_Decrypt(unsigned char* block, unsigned char* expandedKey){
