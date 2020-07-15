@@ -1,5 +1,15 @@
 # AES-128 ENCRYPTION AND DECRYPTION TOOL 
-Here is a list of things that need to be done:
-* Add decryption;
-* Make AES as a completely separate library from the main program and link it together in the Makefile;
-* Check for errors;
+
+## Installation:
+With gcc and make modules installed:
+
+* Download or clone the repository with 'git clone https://github.com/lollerfirst/aes_encryption_decryption/';
+* Use make to automate the compilation process with the Makefile instructions:
+	*  'make encrypt'
+	*  'make decrypt'
+	*  'rm *.o'
+
+## Usage:
+Use './encrypt <filepath> <16B-key>' to encrypt your file with the specified 16 bytes key.
+Use './decrypt <filepath> <16B-key>' to decrypt your file with the same key.
+

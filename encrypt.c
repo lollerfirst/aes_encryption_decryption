@@ -5,17 +5,17 @@
 
 int main(int argc, char** argv){
 	switch(argc){
-		case 2: break;
+		case 3: break;
 		default: printf("Usage: encrypt <path> <key>\n");
 				 return -1;
 	}
 	
-	char* filepath = argv[0];
+	char* filepath = argv[1];
 	unsigned char key[16];
 	unsigned char expandedKeys[176];
 	int j;
 	for(j=0; j<16; j++)
-		key[j] = argv[1][j];
+		key[j] = argv[2][j];
 	
 	
 	
@@ -67,7 +67,7 @@ int main(int argc, char** argv){
 	}
 	fclose(fptr);
 	free(message);
-	
-	printf("Success: file successfully encrypted.");
+
+	printf("Success: file successfully encrypted.\n");
 	return 0;
 }
